@@ -27,7 +27,7 @@ protocol_map = {
     "58": "ICMPv6"
 }
 
-# Carregar dados
+#carregar dados
 df = pd.read_csv("49.csv")
 
 # Converter portas e protocolo para nomes compreensíveis
