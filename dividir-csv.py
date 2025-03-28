@@ -20,7 +20,7 @@ file_name = os.path.splitext(os.path.basename(input_csv))[0]
 
 #definir o número de linhas por arquivo
 total_rows = len(df)
-rows_per_file = math.ceil(total_rows / num_files)  # Arredonda para cima
+rows_per_file = math.ceil(total_rows / num_files)  
 
 #divide o arquivo em partes iguais
 for i in range(num_files):
@@ -46,4 +46,6 @@ for i in range(num_files):
     df_split.to_csv(output_csv, index=False)
 
     print(f"Arquivo {output_csv} salvo com {len(df_split)} linhas.")
+
+
 
