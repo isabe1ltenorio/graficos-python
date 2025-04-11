@@ -54,7 +54,7 @@ Agrupa os registros por porta e traduz para o nome do serviço correspondente (e
 
 ---
 
-### 5. Código de Classificação das Portas de Origem (`source.py`)
+### 5. Código de Classificação das Portas de Origem e Destino (`source.py`)
 
 **Para que serve:**  
 Classifica as portas de origem dos acessos em:
