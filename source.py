@@ -8,7 +8,7 @@ sns.set(style="whitegrid")
 df = pd.read_csv('96.csv')
 
 # Converte a coluna source_port para numérica
-df['source_port'] = pd.to_numeric(df['source_ip'], errors='coerce')
+df['source_port'] = pd.to_numeric(df['source_port'], errors='coerce')
 
 # Dicionário de portas conhecidas
 known_ports = {
