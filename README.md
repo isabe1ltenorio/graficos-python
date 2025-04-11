@@ -42,10 +42,10 @@ Gera um gráfico de pizza mostrando a frequência de requisições por IP de ori
 
 ---
 
-### 4. Código de Frequência dos Serviços por Portas (`service.py`)
+### 4. Código de Frequência dos Serviços por Protocolos (`service.py`)
 
 **Para que serve:**  
-Agrupa os registros por porta e traduz para o nome do serviço correspondente (ex: 443 → HTTPS), exibindo um gráfico de barras com as ocorrências de cada serviço.
+Agrupa os registros por protocolo e traduz para o nome do serviço correspondente (ex: 443 → HTTPS), exibindo um gráfico de barras com as ocorrências de cada serviço.
 
 **Principais aplicações:**  
 - Entender quais serviços são mais utilizados no ambiente  
