@@ -1,70 +1,29 @@
-## Finalidade dos Códigos
+## 📊 Análise de Logs FortiGate
 
-### 1. Código de Visualização Sankey (`map_protocolo_and_porta.py`)
-
-**Para que serve:**  
-Cria diagramas de fluxo interativos (Sankey) para analisar como o tráfego de rede se move através das políticas de firewall do FortiGate, mostrando:
-- **Conexões** entre portas de origem → protocolos → portas de destino
-- **Padrões** de tráfego frequentes
-- **Serviços** mais utilizados (HTTP, SSH, RDP, etc.)
-
-**Principais aplicações:**  
-- Identificar políticas de firewall pouco eficientes  
-- Visualizar concentração de tráfego em portas específicas  
-- Detectar protocolos incomuns ou não autorizados  
+Projeto em Python para processar e analisar arquivos de logs gerados por firewalls FortiGate numa empresa, com o objetivo de identificar **inconsistências**, **padrões suspeitos** e gerar **estatísticas e visualizações** que apoiem a **tomada de decisões em cibersegurança**.
 
 ---
 
-### 2. Código Divisor de CSV (`dividir-csv.py`)
+### 🧩 Funcionalidades Principais
 
-**Para que serve:**  
-Divide arquivos grandes de logs do FortiGate em partes menores para:
-- Facilitar processamento e gerar gráficos mais compreensíveis  
-- Permitir análise paralela de diferentes segmentos  
-- Contornar limitações de ferramentas que não lidam bem com arquivos muito grandes  
+- **Leitura de logs**  
+  Suporte a logs de tráfego, eventos e segurança exportados do FortiGate ou FortiAnalyzer.
 
-**Principais aplicações:**  
-- Pré-processamento de logs antes da análise  
-- Preparação de dados para processamento distribuído  
-- Divisão de capturas longas para envio por sistemas com limitação de tamanho  
+- **Análise de inconsistências**  
+  - Detecção de sessões duplicadas.  
+  - Identificação de IPs inesperados.  
+  - Verificação de falhas na geração de logs ou registros truncados.
 
----
+- **Métricas de uso**  
+  - IPs mais ativos (origem e destino).  
+  - Protocolos e serviços mais utilizados.  
+  - Volume de dados transmitidos por IP, porta ou protocolo.  
+  - Distribuição temporal de eventos (picos de tráfego, padrões horários).
 
-### 3. Código de Distribuição de IPs de Origem (`ip.py`)
-
-**Para que serve:**  
-Gera um gráfico de pizza mostrando a frequência de requisições por IP de origem, com porcentagem e legenda detalhada.
-
-**Principais aplicações:**  
-- Identificar os principais emissores de tráfego  
-- Avaliar concentração de acessos em determinados IPs  
-- Detectar fontes suspeitas com alto volume de conexões  
-
----
-
-### 4. Código de Frequência dos Serviços por Protocolos (`service.py`)
-
-**Para que serve:**  
-Agrupa os registros por protocolo e traduz para o nome do serviço correspondente (ex: 443 → HTTPS), exibindo um gráfico de barras com as ocorrências de cada serviço.
-
-**Principais aplicações:**  
-- Entender quais serviços são mais utilizados no ambiente  
-- Auxiliar na priorização de políticas de segurança por criticidade de uso  
-- Identificar portas não padronizadas com alto tráfego  
-
----
-
-### 5. Código de Classificação das Portas de Origem e Destino (`source.py`)
-
-**Para que serve:**  
-Classifica as portas de origem dos acessos em:
-- Serviços conhecidos (SSH, HTTP, etc.)
-- Faixas de valor (ex: 0–10k, 10k–20k)
-- Outras categorias como “Acima de 100k” ou “Não usa porta”
-
-Exibe a distribuição em um gráfico de pizza com legenda lateral.
-
-**Principais aplicações:**  
-- Observar padrões de variação em portas dinâmicas  
-- Identificar possíveis anomalias ou uso incomum de portas  
-- Compreender a dispersão dos acessos em relação ao uso de portas específicas  
+- **Geração de relatórios e gráficos**  
+  - Apresentação dos dados de forma clara no terminal e exportação para arquivos (CSV, JSON).  
+  - Geração de **gráficos personalizados que facilitam a visualização dos fluxos de tráfego permitidos por cada política de firewall**.  
+  - Esses gráficos apoiam a **identificação de anomalias**, como acessos fora do padrão, e são especialmente úteis para detectar **políticas mal configuradas**, incluindo:
+    - Políticas com `Service: ALL`  
+    - Políticas com `Source` ou `Destination: ANY`  
+    - Regras com escopos excessivamente amplos que prejudicam a segurança
